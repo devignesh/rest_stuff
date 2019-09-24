@@ -29,3 +29,14 @@ class VerifyToken(APIView):
             return Response({'msg':'Something went wrong'})
         
         
+class RefreshToken(APIView):
+    serializers_class = RefreshSerializer
+    def post(self, request, user_id):
+        serializer = RefreshSerializer(data=request.data)
+        if serializer.is_valid():
+            encode = jwt.encode({'user_id':'1'}, SECRET_KEY, algorithm = 'HS256')
+            print(encode)
+            encode_refresh = jwt.encode({'user_id':'1'}, SECRET_KEY, algorithm = 'HS256')
+            
+            
+            return Response({'token': encode_refresh })
