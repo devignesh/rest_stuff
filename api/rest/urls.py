@@ -13,6 +13,6 @@ app_name = "rest"
 urlpatterns = [
     
     url('token_refresh/?(?P<user_id>[^/]+)/$', views.RefreshToken.as_view()),
-    
+    url('token_verify/?(?P<user_id>[^/]+)/$',views.VerifyToken.as_view()),
     
 ]
